@@ -10,9 +10,10 @@ PrintTask::PrintTask(char *text) {
 void PrintTask::loop() {
 	
 	Task::loop();
+
 	Serial.print(F("PrintTask::loop - "));
 	Serial.println(_text);
-	
+
 	_state = done;
 
 };

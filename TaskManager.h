@@ -11,6 +11,8 @@
 #include "MoveServoTask.h"
 #include "FuncTask.h"
 
+#include "ChangeBoolTask.h"
+
 class TaskManager {
   public:
     TaskManager();

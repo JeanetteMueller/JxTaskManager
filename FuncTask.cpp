@@ -4,6 +4,7 @@
 
 FuncTask::FuncTask(const Func& function) {
 	_function = function;
+	count = 0;
 
 };
 

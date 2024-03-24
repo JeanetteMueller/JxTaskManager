@@ -38,8 +38,6 @@ void MoveServoTask::loop()
 {
 	Task::loop();
 	
-	Serial.println(F("MoveServo::loop - "));
-	
 	if (_doneAnimation == 0) {
 		if (_duration > 0) {
 			double percentage = _runningDuration / _duration;
@@ -74,11 +72,6 @@ double MoveServoTask::easeInAndOut(double start, double current, double target, 
 
 	if (current != target)
 	{
-		Serial.print(F("easeInAndOut from "));
-		Serial.print(start);
-		Serial.print(F(" to "));
-		Serial.print(target);
-
 		double easeInOut = easeInOutQuad(percentage);
 
 		if (start < target)
@@ -103,9 +96,6 @@ double MoveServoTask::easeInAndOut(double start, double current, double target, 
 				result = target;
 			}
 		}
-
-		Serial.print(F(":   "));
-		Serial.print(result);
 	}
 
 	return result;

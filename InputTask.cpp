@@ -3,7 +3,7 @@
 #include <IBusBM.h>
 #include "InputTask.h"
 
-InputTask::InputTask(IBusBM *iBus, uint8_t channelNumber, int16_t reactMinValue, int16_t reactMaxValue, bool debug) {
+InputTask::InputTask(IBusBM *iBus, uint8_t channelNumber, int16_t reactMinValue, int16_t reactMaxValue, const bool debug) {
 	_iBus = iBus;
 	_channelNumber = channelNumber;
 	_reactMinValue = reactMinValue;
