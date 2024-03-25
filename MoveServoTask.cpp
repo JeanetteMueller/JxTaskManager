@@ -3,7 +3,7 @@
 #include "MoveServoTask.h"
 #include <Adafruit_PWMServoDriver.h>
 
-MoveServoTask::MoveServoTask(Adafruit_PWMServoDriver pwm, uint8_t pin, double startDegree, double targetDegree, double duration, uint16_t wait)
+MoveServoTask::MoveServoTask(Adafruit_PWMServoDriver pwm, uint8_t pin, double startDegree, double targetDegree, double duration, uint16_t waitValue)
 {
 	_pwm = pwm;
 	_pin = pin;
@@ -17,21 +17,21 @@ MoveServoTask::MoveServoTask(Adafruit_PWMServoDriver pwm, uint8_t pin, double st
 		{
 			duration = (targetDegree - startDegree) * 10;
 		}
-		else 
+		else if (startDegree > targetDegree)
 		{
 			duration = (startDegree - targetDegree) * 10;
 		}
-		
 	}
 
 	_duration = duration;
 	_doneAnimation = 0;
-	_wait = wait;
+	_wait = waitValue;
 }
 void MoveServoTask::reset() {
 	Task::reset();
 	
 	_doneAnimation = 0;
+	_currentDegree = _startDegree;
 }
 
 void MoveServoTask::loop()
