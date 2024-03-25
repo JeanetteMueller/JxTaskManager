@@ -1,6 +1,6 @@
 
-#ifndef TaskManager_h
-#define TaskManager_h
+#ifndef JxTaskManager_h
+#define JxTaskManager_h
 
 #include "Arduino.h"
 #include "Task.h"
@@ -13,9 +13,9 @@
 
 #include "ChangeBoolTask.h"
 
-class TaskManager {
+class JxTaskManager {
   public:
-    TaskManager();
+    JxTaskManager();
 	void loop();
     void addTask(Task *newTask);
   private:

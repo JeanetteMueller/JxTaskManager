@@ -1,15 +1,13 @@
 
 #include "Arduino.h"
-#include "TaskManager.h"
+#include "JxTaskManager.h"
 #include "Task.h"
 
-
-
-TaskManager::TaskManager() {
+JxTaskManager::JxTaskManager() {
 	_runningTask = 0;
 };
 
-void TaskManager::loop() {
+void JxTaskManager::loop() {
 	
 	// Serial.println(F("TaskManager::loop"));
 	
@@ -40,7 +38,7 @@ void TaskManager::loop() {
 	} 
 };
 
-void TaskManager::addTask(Task *newTask) {
+void JxTaskManager::addTask(Task *newTask) {
 
 	_tasks[_taskCount] = newTask;
 	_taskCount++;
