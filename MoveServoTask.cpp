@@ -27,9 +27,10 @@ MoveServoTask::MoveServoTask(Adafruit_PWMServoDriver pwm, uint8_t pin, double st
 	_doneAnimation = 0;
 	_wait = waitValue;
 }
-void MoveServoTask::reset() {
+void MoveServoTask::reset()
+{
 	Task::reset();
-	
+
 	_doneAnimation = 0;
 	_currentDegree = _startDegree;
 }
@@ -37,26 +38,33 @@ void MoveServoTask::reset() {
 void MoveServoTask::loop()
 {
 	Task::loop();
-	
-	if (_doneAnimation == 0) {
-		if (_duration > 0) {
+
+	if (_doneAnimation == 0)
+	{
+		if (_duration > 0)
+		{
 			double percentage = _runningDuration / _duration;
-			
+
 			_currentDegree = easeInAndOut(_startDegree, _currentDegree, _targetDegree, percentage);
-			
+
 			uint16_t pulselength = map(_currentDegree, 0, 180, 150, 595);
 			_pwm.setPWM(_pin, 0, pulselength);
-			
-			if (percentage >= 1.0) {
+
+			if (percentage >= 1.0)
+			{
 				_doneAnimation = _runningDuration;
 			}
-		}else{
+		}
+		else
+		{
 			uint16_t pulselength = map(_targetDegree, 0, 180, 150, 595);
 			_pwm.setPWM(_pin, 0, pulselength);
-			
+
 			_doneAnimation = _runningDuration;
 		}
-	} else if (_runningDuration - _doneAnimation >= _wait) {
+	}
+	else if (_runningDuration - _doneAnimation >= _wait)
+	{
 		_state = done;
 	}
 }

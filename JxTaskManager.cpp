@@ -3,43 +3,43 @@
 #include "JxTaskManager.h"
 #include "Task.h"
 
-JxTaskManager::JxTaskManager() {
+JxTaskManager::JxTaskManager()
+{
 	_runningTask = 0;
 };
 
-void JxTaskManager::loop() {
-	
-	// Serial.println(F("TaskManager::loop"));
-	
-	if (_tasks[_runningTask]->getState() == Task::State::done){
-	
+void JxTaskManager::loop()
+{
+	if (_tasks[_runningTask]->getState() == Task::State::done)
+	{
+
 		_runningTask++;
 	}
-	
-	if (_runningTask > _taskCount - 1) {
+
+	if (_runningTask > _taskCount - 1)
+	{
 		Serial.println(F("TaskManager::loop reset all"));
-		
-		for (uint8_t index = 0; index < _taskCount; index++){
+
+		for (uint8_t index = 0; index < _taskCount; index++)
+		{
 			_tasks[index]->reset();
 		}
-		
+
 		_runningTask = 0;
 	}
-	
-	
-	if (_tasks[_runningTask]->getState() == Task::State::none){
-		// Serial.println(F("TaskManager::loop start new Task"));
+
+	if (_tasks[_runningTask]->getState() == Task::State::none)
+	{
 		_tasks[_runningTask]->start();
 	}
-	if (_tasks[_runningTask]->getState() == Task::State::running){
-		// Serial.println(F("TaskManager::loop loop current Task"));
+	if (_tasks[_runningTask]->getState() == Task::State::running)
+	{
 		_tasks[_runningTask]->loop();
-		
-	} 
+	}
 };
 
-void JxTaskManager::addTask(Task *newTask) {
-
+void JxTaskManager::addTask(Task *newTask)
+{
 	_tasks[_taskCount] = newTask;
 	_taskCount++;
 };

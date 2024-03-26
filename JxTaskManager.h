@@ -13,16 +13,17 @@
 
 #include "ChangeBoolTask.h"
 
-class JxTaskManager {
-  public:
+class JxTaskManager
+{
+public:
     JxTaskManager();
-	void loop();
+    void loop();
     void addTask(Task *newTask);
-  private:
-    Task * _tasks[50];
-	uint8_t _taskCount;
-	uint8_t _runningTask;
+
+private:
+    Task *_tasks[50];
+    uint8_t _taskCount;
+    uint8_t _runningTask;
 };
 
 #endif
-
