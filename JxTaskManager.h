@@ -10,8 +10,8 @@
 #include "PrintTask.h"
 #include "MoveServoTask.h"
 #include "FuncTask.h"
-
 #include "ChangeBoolTask.h"
+#include "IntValueTask.h"
 
 class JxTaskManager
 {
