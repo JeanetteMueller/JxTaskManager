@@ -12,6 +12,7 @@
 #include "FuncTask.h"
 #include "ChangeBoolTask.h"
 #include "IntValueTask.h"
+#include "BoolValueTask.h"
 
 class JxTaskManager
 {

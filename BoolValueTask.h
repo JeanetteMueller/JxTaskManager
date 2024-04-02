@@ -8,7 +8,7 @@
 class BoolValueTask : public Task
 {
 public:
-	BoolValueTask(bool *value, bool reactValue, const bool debug);
+	BoolValueTask(bool *value, bool reactValue, const bool debug = false);
 	void loop();
 
 private:
