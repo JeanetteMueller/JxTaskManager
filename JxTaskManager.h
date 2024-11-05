@@ -3,6 +3,9 @@
 #define JxTaskManager_h
 
 #include "Arduino.h"
+
+#include <functional>
+
 #include "Task.h"
 
 #include "WaitTask.h"

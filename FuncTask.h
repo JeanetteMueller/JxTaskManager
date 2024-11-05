@@ -4,6 +4,7 @@
 
 #include "Arduino.h"
 #include "Task.h"
+#include <functional>
 
 class FuncTask : public Task
 {
