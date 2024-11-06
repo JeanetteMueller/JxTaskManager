@@ -3,43 +3,75 @@
 #include "JxTaskManager.h"
 #include "Task.h"
 
-JxTaskManager::JxTaskManager()
+JxTaskManager::JxTaskManager(const char *name, const bool debug)
 {
-	_runningTask = 0;
+  _debug = debug;
+  _identifier = name;
+  _runningTask = 0;
 };
 
 void JxTaskManager::loop()
 {
-	if (_tasks[_runningTask]->getState() == Task::State::done)
-	{
+  if (_debug)
+  {
+    Serial.print(F("TaskManager::loop \""));
+    Serial.print(F(_identifier));
+    Serial.println(F("\" "));
+  }
 
-		_runningTask++;
-	}
+  if (_tasks[_runningTask]->getState() == Task::State::done)
+  {
+    _runningTask++;
+  }
 
-	if (_runningTask > _taskCount - 1)
-	{
-		Serial.println(F("TaskManager::loop reset all"));
+  if (_runningTask > _taskCount - 1)
+  {
+    if (_debug)
+    {
+      Serial.print(F("TaskManager::loop \""));
+      Serial.print(F(_identifier));
+      Serial.println(F("\" reset all"));
+    }
+    for (uint8_t index = 0; index < _taskCount; index++)
+    {
+      _tasks[index]->reset();
+    }
 
-		for (uint8_t index = 0; index < _taskCount; index++)
-		{
-			_tasks[index]->reset();
-		}
+    _runningTask = 0;
+  }
 
-		_runningTask = 0;
-	}
+  if (_tasks[_runningTask]->getState() == Task::State::none)
+  {
+    _tasks[_runningTask]->start();
+  }
 
-	if (_tasks[_runningTask]->getState() == Task::State::none)
-	{
-		_tasks[_runningTask]->start();
-	}
-	if (_tasks[_runningTask]->getState() == Task::State::running)
-	{
-		_tasks[_runningTask]->loop();
-	}
+  if (_tasks[_runningTask]->getState() == Task::State::running)
+  {
+    _tasks[_runningTask]->loop();
+  }
 };
 
 void JxTaskManager::addTask(Task *newTask)
 {
-	_tasks[_taskCount] = newTask;
-	_taskCount++;
+  if (_debug)
+  {
+    Serial.print("JxTaskManager::addTask \"");
+    Serial.print(F(_identifier));
+    Serial.print(F("\" "));
+  }
+  if (_taskCount < 254 - 1)
+  {
+    _tasks[_taskCount] = newTask;
+    _taskCount++;
+
+    if (_debug)
+    {
+      Serial.print(_taskCount);
+      Serial.println(" Tasks saved");
+    }
+  }
+  else
+  {
+    Serial.println("WARNING - Try to save more Tasks than possible");
+  }
 };

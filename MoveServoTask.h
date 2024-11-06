@@ -9,12 +9,12 @@
 class MoveServoTask : public Task
 {
 public:
-	MoveServoTask(Adafruit_PWMServoDriver pwm, uint8_t pin, double startDegree, double targetDegree, double duration = 0, uint16_t wait = 0);
+	MoveServoTask(Adafruit_PWMServoDriver *pwm, uint8_t pin, double startDegree, double targetDegree, double duration = 0, uint16_t wait = 0, const bool debug = false);
 	void loop();
 	void reset();
 
 private:
-	Adafruit_PWMServoDriver _pwm;
+	Adafruit_PWMServoDriver *_pwm;
 	uint8_t _pin;
 	double _startDegree;
 	double _targetDegree;

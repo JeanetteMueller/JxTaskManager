@@ -4,7 +4,7 @@
 
 #include "Arduino.h"
 
-#include <functional>
+// #include <functional>
 
 #include "Task.h"
 
@@ -18,17 +18,18 @@
 #include "DoubleValueTask.h"
 #include "BoolValueTask.h"
 
-class JxTaskManager
-{
+class JxTaskManager {
 public:
-    JxTaskManager();
-    void loop();
-    void addTask(Task *newTask);
+  JxTaskManager(const char *name, const bool debug = false);
+  void loop();
+  void addTask(Task *newTask);
 
 private:
-    Task *_tasks[50];
-    uint8_t _taskCount;
-    uint8_t _runningTask;
+  bool _debug = false;
+  const char *_identifier = "DEFAULT";
+  Task *_tasks[254];
+  uint8_t _taskCount = 0;
+  uint8_t _runningTask = 0;
 };
 
 #endif

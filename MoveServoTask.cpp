@@ -3,7 +3,7 @@
 #include "MoveServoTask.h"
 #include <Adafruit_PWMServoDriver.h>
 
-MoveServoTask::MoveServoTask(Adafruit_PWMServoDriver pwm, uint8_t pin, double startDegree, double targetDegree, double duration, uint16_t waitValue)
+MoveServoTask::MoveServoTask(Adafruit_PWMServoDriver *pwm, uint8_t pin, double startDegree, double targetDegree, double duration, uint16_t waitValue, const bool debug)
 {
 	_pwm = pwm;
 	_pin = pin;
@@ -48,7 +48,7 @@ void MoveServoTask::loop()
 			_currentDegree = easeInAndOut(_startDegree, _currentDegree, _targetDegree, percentage);
 
 			uint16_t pulselength = map(_currentDegree, 0, 180, 150, 595);
-			_pwm.setPWM(_pin, 0, pulselength);
+			_pwm->setPWM(_pin, 0, pulselength);
 
 			if (percentage >= 1.0)
 			{
@@ -58,7 +58,7 @@ void MoveServoTask::loop()
 		else
 		{
 			uint16_t pulselength = map(_targetDegree, 0, 180, 150, 595);
-			_pwm.setPWM(_pin, 0, pulselength);
+			_pwm->setPWM(_pin, 0, pulselength);
 
 			_doneAnimation = _runningDuration;
 		}
