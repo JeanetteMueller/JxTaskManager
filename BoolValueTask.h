@@ -13,8 +13,8 @@ public:
 
 private:
 	bool *_value;
-	bool _reactValue;
-	bool _debug;
+	bool _reactValue = false;
+	bool _debug = false;
 };
 
 #endif

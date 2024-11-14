@@ -12,10 +12,10 @@ public:
 	void loop();
 
 private:
-	double *_value;
-	double _reactMinValue;
-	double _reactMaxValue;
-	bool _debug;
+	double *_value = 0;
+	double _reactMinValue = 0;
+	double _reactMaxValue = 0;
+	bool _debug = false;
 };
 
 #endif

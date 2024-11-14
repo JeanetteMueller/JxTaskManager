@@ -13,8 +13,8 @@ public:
 
 private:
 	bool *_variable;
-	bool _newValue;
-	bool _debug;
+	bool _newValue = false;
+	bool _debug = false;
 };
 
 #endif

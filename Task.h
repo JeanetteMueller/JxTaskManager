@@ -21,9 +21,9 @@ public:
 	virtual void reset();
 
 protected:
-	State _state;
-	long _startTimeStamp;
-	long _runningDuration;
+	State _state = none;
+	long _startTimeStamp = 0;
+	long _runningDuration = 0;
 
 private:
 };

@@ -14,10 +14,10 @@ public:
 
 private:
 	IBusBM *_iBus;
-	uint8_t _channelNumber;
-	uint16_t _reactMinValue;
-	uint16_t _reactMaxValue;
-	bool _debug;
+	uint8_t _channelNumber = 0;
+	uint16_t _reactMinValue = 0;
+	uint16_t _reactMaxValue = 0;
+	bool _debug = false;
 };
 
 #endif

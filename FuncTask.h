@@ -11,7 +11,7 @@ class FuncTask : public Task
 public:
 	FuncTask(const std::function<Task::State(FuncTask *)> &function);
 	void loop();
-	uint16_t count;
+	uint16_t count = 0;
 private:
 	std::function<Task::State(FuncTask *)> _function;
 };

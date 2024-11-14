@@ -3,7 +3,7 @@
 #include "JxTaskManager.h"
 #include "Task.h"
 
-JxTaskManager::JxTaskManager(const char *name, const bool debug)
+JxTaskManager::JxTaskManager(char *name, const bool debug)
 {
   _debug = debug;
   _identifier = name;
@@ -59,7 +59,7 @@ void JxTaskManager::addTask(Task *newTask)
     Serial.print(F(_identifier));
     Serial.print(F("\" "));
   }
-  if (_taskCount < 254 - 1)
+  if (_taskCount < 50 - 1)
   {
     _tasks[_taskCount] = newTask;
     _taskCount++;

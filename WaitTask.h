@@ -13,8 +13,8 @@ public:
 	void loop();
 
 private:
-	uint16_t _duration;
-	bool _debug;
+	uint16_t _duration = 0;
+	bool _debug = false;
 };
 
 #endif

@@ -12,10 +12,10 @@ public:
 	void loop();
 
 private:
-	int16_t *_value;
-	int16_t _reactMinValue;
-	int16_t _reactMaxValue;
-	bool _debug;
+	int16_t *_value = 0;
+	int16_t _reactMinValue = 0;
+	int16_t _reactMaxValue = 0;
+	bool _debug = false;
 };
 
 #endif

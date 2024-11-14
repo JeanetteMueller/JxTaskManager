@@ -4,7 +4,7 @@
 
 #include "Arduino.h"
 
-// #include <functional>
+#include <functional>
 
 #include "Task.h"
 
@@ -20,14 +20,14 @@
 
 class JxTaskManager {
 public:
-  JxTaskManager(const char *name, const bool debug = false);
+  JxTaskManager(char *name, const bool debug = false);
   void loop();
   void addTask(Task *newTask);
 
 private:
   bool _debug = false;
-  const char *_identifier = "DEFAULT";
-  Task *_tasks[254];
+  char *_identifier = "DEFAULT";
+  Task *_tasks[50];
   uint8_t _taskCount = 0;
   uint8_t _runningTask = 0;
 };
